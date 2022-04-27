@@ -30,8 +30,11 @@ public class Cloud {
         return header;
     }
     public String getState(int channel){
-
-        
+        for (Lamp l: lamps){
+            if(l.getChannel()==channel)
+               return l.getState();
+        }
+        return null;  
     }
     private ArrayList<Lamp> lamps; // getting ready for next stages
 }

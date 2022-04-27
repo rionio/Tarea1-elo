@@ -29,6 +29,10 @@ public class Lamp {
         else
             return "0\t0\t0";
     }
+    public String getState(){
+        String state = String.valueOf(this.state);
+        return state;
+    }
     private int channel;
     private short r,g,b;
     private LampState state;
