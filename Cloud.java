@@ -22,17 +22,15 @@ public class Cloud {
     }
     public String getHeaders(){
         String header = "";
-        int count = 1;
         for (Lamp l: lamps){
-            header += "Lamp "+count+": "+l.getHeader()+", ";
-            count++;
+            header +=l.getHeader();
         }
         return header;
     }
     public String getState(int channel){
         for (Lamp l: lamps){
             if(l.getChannel()==channel)
-               return l.getState();
+               return l.getState();  
         }
         return null;  
     }
