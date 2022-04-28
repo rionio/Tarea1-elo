@@ -11,10 +11,6 @@ public class LampControl {
     public int getChannel(){
         return channel;
     }
-    public void up_red(){
-        cloud.up_red
-    }
-
 
     private Cloud cloud;
     private int channel;
