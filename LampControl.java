@@ -10,7 +10,7 @@ public class LampControl {
     public int getChannel(){
         //????
     }
-    //???
+    //???sdfsds
     private Cloud cloud;
     private int channel;
 }
