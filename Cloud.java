@@ -36,5 +36,5 @@ public class Cloud {
         }
         return null;  
     }
-    private ArrayList<Lamp> lamps; // getting ready for next stages
+    private ArrayList<Lamp> lamps; // getting ready for next stagesas
 }
