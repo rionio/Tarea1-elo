@@ -1,4 +1,3 @@
-package Stage1;
 public class LampControl {
     public LampControl(int channel, Cloud c){
         this.channel = channel;

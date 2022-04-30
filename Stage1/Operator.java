@@ -1,4 +1,3 @@
-package Stage1;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,12 +14,11 @@ public class Operator {
         out.println("Time\t" + cloud.getHeaders());
          
         while(in.hasNextInt()){
-            time =in.nextInt(); 
-            out.println(time+"\t"+cloud.getStates());
+            time =in.nextInt();
             String string=in.next();
-            if (!string.equals("L")) {
+            if (string.equals("C")) {
                 out.println("Unexpected device:" + string);
-                System.exit(-1);
+                in.nextLine();
             }else{
                 int channel = in.nextInt();
                 LampControl control=null;
@@ -37,11 +35,14 @@ public class Operator {
                     switch(command2){
                         case "U":
                             control.upColor(command1);
+                            break;
                         case "D":
                             control.downColor(command1);
+                            break;
                     }
                 }
             }
+            out.println(time+"\t"+cloud.getStates());
         }
     }
     private double time=0;

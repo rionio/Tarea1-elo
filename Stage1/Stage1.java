@@ -1,9 +1,9 @@
-package Stage1;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
-
-import javax.swing.event.ChangeEvent;
 
 public class Stage1 {
     public static void main(String [] args) throws IOException {
@@ -11,7 +11,7 @@ public class Stage1 {
             System.out.println("Usage: java Stage1 <configurationFile.txt>");
             System.exit(-1);
         }
-        Scanner in = new Scanner(new File(args[0]));
+        Scanner in = new Scanner( new File(args[0]));//
         //System.out.println("File: " + args[0]);
         Cloud cloud = new Cloud();
         // reading <#_de_cortinas> <#_de_lámparas> <#_controles_cortinas> <#_controles_lámparas>
@@ -20,6 +20,7 @@ public class Stage1 {
         in.nextInt();  // skip number of roller shade controls
         int numLampsControl = in.nextInt();
         // skipping <alfa0> <length0> <canal0> … <alfaN_1> <lengthN_1> <canalN_1>
+        in.nextLine();
         in.nextLine();
         // creating lamps according to <canal0>…..<canalL_1> for just one lamp
         String channels = in.nextLine();

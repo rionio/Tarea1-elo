@@ -1,4 +1,3 @@
-package Stage1;
 import java.util.ArrayList;
 
 public class Cloud {
@@ -52,7 +51,6 @@ public class Cloud {
             }
         }
     }
-
-
+    
     private ArrayList<Lamp> lamps; // getting ready for next stagesas
 }

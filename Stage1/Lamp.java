@@ -1,5 +1,3 @@
-package Stage1;
-
 public class Lamp {
     public Lamp (int channel){
         r=255;
@@ -37,30 +35,30 @@ public class Lamp {
     }
     public void upColor(String color){
         if(color.equals("R")){
-            if(!(r==255 || r==0)){
+            if(!(r==255)){
                 r+=5;
             }
         }else if(color.equals("G")){
-            if(!(g==255 || g==0)){
+            if(!(g==255)){
                 g+=5;
             }
         }else{
-            if(!(b==255 || b==0)){
+            if(!(b==255)){
                 b+=5;
             }
         }
     }
     public void downColor(String color){
         if(color.equals("R")){
-            if(!(r==255 || r==0)){
+            if(!(r==0)){
                 r-=5;
             }
         }else if(color.equals("G")){
-            if(!(g==255 || g==0)){
+            if(!(g==0)){
                 g-=5;
             }
         }else{
-            if(!(b==255 || b==0)){
+            if(!(b==0)){
                 b-=5;
             }
         }
