@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 public class Stage2 {
     public static void main(String [] args) throws IOException {
-        /* if (args.length != 1) {
+        if (args.length != 1) {
             System.out.println("Usage: java Stage2 <configurationFile.txt>");
             System.exit(-1);
-        } */
-        Scanner in = new Scanner( new File("C:/Users/jabar/Documents/Programacion/java/Tarea1-elo/Stage2/configuracion.txt"));//args[0]
+        }
+        Scanner in = new Scanner( new File(args[0]));
         //System.out.println("File: " + args[0]);
         Cloud cloud = new Cloud();
         int numRoller=in.nextInt(); 
