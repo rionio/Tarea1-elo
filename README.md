@@ -10,5 +10,6 @@
 1. usando el comando <make> para compilar y <make run> para ejecutar
 
 2. usar la secuencia de comandos: 
-<java <StageN> archivo.txt> (N siendo el numero de la stage) 
-<java archMain "Configuracion.txt"> 
+<javac class1.java class2.java - - - classN.java archMain.java> Siendo N la cantidad de clases y archMain siendo el StageN correspondiente (N siendo el numero de la stage)
+<java <StageN> archivo.txt> (N siendo el numero de la stage) y archivo.txt la configuracion 
+* Ejemplo: <java archMain "Configuracion.txt"> 
