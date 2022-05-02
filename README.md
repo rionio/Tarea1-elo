@@ -9,4 +9,6 @@
 - Una vez descomprimidos todos los archivos, se puede compilar de 2 maneras
 1. usando el comando <make> para compilar y <make run> para ejecutar
 
-2. usar la secuencia de comandos <java  archivo.txt> <java archMain "Configuracion.txt"> 
+2. usar la secuencia de comandos 
+  <java <StageN> archivo.txt> (N siendo el numero de la stage)
+  <java archMain "Configuracion.txt"> 
