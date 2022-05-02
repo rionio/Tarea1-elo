@@ -2,7 +2,7 @@ JFLAGS = -g
 JC = javac
 JVM= java 
 FILE= configuracion.txt
-MAIN= Stage3
+MAIN= ExtraStage
 
 RM = rm
 
