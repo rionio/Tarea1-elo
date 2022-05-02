@@ -1,10 +1,10 @@
-import javax.lang.model.util.ElementScanner6;
+import javafx.beans.property.FloatProperty;
 
 public class RollerShade extends DomoticDevice {
     public RollerShade (int channel, double alpha, double length) {
         super(nextId++, channel);
         motor = new Motor(alpha);
-        ShadeTotalLength = 0 ;
+        ShadeTotalLength = 0;
         this.length = 0;
     }
     public void startUp(){
@@ -16,7 +16,7 @@ public class RollerShade extends DomoticDevice {
     public void stop(){
         motor.stop();
     }
-    public void advanceTime(double delta){
+    public void advanceTime(float delta){
         motor.advanceTime(delta);
     }
     public String getHeader(){
@@ -47,7 +47,7 @@ public class RollerShade extends DomoticDevice {
         public void stop(){
             state = MotorState.STOPPED;
         }
-        public void advanceTime(double delta){
+        public void advanceTime(float delta){
             double increment = alpha*delta*RADIUS;
             switch (state) {
                 case STOPPED:

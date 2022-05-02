@@ -1,6 +1,12 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.lang.reflect.Array;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class Operator {
     public Operator( Cloud c){
@@ -10,14 +16,19 @@ public class Operator {
     public void addLampControl(LampControl l){
         lampControl.add(l);
     }
-    public void executeCommands(Scanner in, PrintStream out){
-        out.println("Time\t" + cloud.getHeaders());
-         
+    public void executeCommands(Scanner in, PrintStream out) throws IOException{
+        File file=new File("./Domotic.csv");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+        FileWriter fw = new FileWriter(file);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write("Time\t" + cloud.getHeaders()+"\n");
         while(in.hasNextInt()){
             time =in.nextInt();
             String string=in.next();
             if (string.equals("C")) {
-                out.println("Unexpected device:" + string);
+                bw.write("Unexpected device:" + string+"\n");
                 in.nextLine();
             }else{
                 int channel = in.nextInt();
@@ -31,7 +42,8 @@ public class Operator {
                 if(command1.equals("N") || command1.equals("F")){
                     control.pressPower();
                 }else{
-                    String command2 = in.next();
+                    in.next();
+  /*                   String command2 = in.next();
                     switch(command2){
                         case "U":
                             control.upColor(command1);
@@ -39,11 +51,12 @@ public class Operator {
                         case "D":
                             control.downColor(command1);
                             break;
-                    }
+                    } */
                 }
             }
-            out.println(time+"\t"+cloud.getStates());
+            bw.write(time+"\t"+cloud.getStates()+"\n");
         }
+        bw.close();
     }
     private double time=0;
     private ArrayList<LampControl> lampControl;

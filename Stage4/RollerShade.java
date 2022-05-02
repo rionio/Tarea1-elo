@@ -1,11 +1,11 @@
-import javax.lang.model.util.ElementScanner6;
+import javafx.beans.property.FloatProperty;
 
 public class RollerShade extends DomoticDevice {
     public RollerShade (int channel, double alpha, double length) {
         super(nextId++, channel);
         motor = new Motor(alpha);
-        ShadeTotalLength = 0 ;
-        this.length = 0;
+        ShadeTotalLength = length;
+        this.length = length;
     }
     public void startUp(){
         motor.turnUp();
@@ -24,13 +24,7 @@ public class RollerShade extends DomoticDevice {
         return s;
     }
     public String toString(){
-        String s;
-        if(motor.getState() == MotorState.UPWARD)
-            s="-100";
-        else if(motor.getState() == MotorState.DOWNWARD)
-            s="100";
-        else 
-            s = "0";
+        String s = String.valueOf(Math.round((length/ShadeTotalLength)*100)) + "%";
         return s;
     }
     private class Motor {  //nested class, Motor is only used within RollerShade.
@@ -64,9 +58,6 @@ public class RollerShade extends DomoticDevice {
                     }
                     break;
             }
-        }
-        public MotorState getState(){
-            return state;
         }
         private double alpha;   
         private MotorState state;

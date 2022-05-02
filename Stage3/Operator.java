@@ -8,15 +8,15 @@ import java.lang.reflect.Array;
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
-
 public class Operator {
     public Operator( Cloud c){
         this.cloud = c;
         shadeControl = new ArrayList<ShadeControl>();
+        lampControl = new ArrayList<LampControl>();
     }
-/*     public void addLampControl(LampControl l){
+    public void addLampControl(LampControl l){
         lampControl.add(l);
-    } */
+    }
     public void addShadeControl(ShadeControl rs){
         shadeControl.add(rs);
     }
@@ -31,6 +31,7 @@ public class Operator {
         while(in.hasNextInt()){
             int commandTime =in.nextInt();
             DecimalFormat decimalFormat= new DecimalFormat("#.#"); 
+            
             while (time < commandTime) {
                 String timeTrun = decimalFormat.format(time);
                 bw.write(timeTrun+"\t"+cloud.getStates()+"\n");
@@ -39,8 +40,27 @@ public class Operator {
             }
             String device=in.next();
             if (!device.equals("C")) {
-                bw.write("Unexpected device:" + device+"\n");
-                in.nextLine();
+                int channel = in.nextInt();
+                LampControl control=null;
+                for(LampControl l: lampControl){
+                    if(channel == l.getChannel()){
+                        control = l;
+                    }
+                }
+                String command1 = in.next();
+                if(command1.equals("N") || command1.equals("F")){
+                    control.pressPower();
+                }else{
+                    String command2 = in.next();
+                    switch(command2){
+                        case "U":
+                            control.upColor(command1);
+                            break;
+                        case "D":
+                            control.downColor(command1);
+                            break;
+                    }
+                }
             }else{
                 int channel = in.nextInt();
                 String command = in.next();
@@ -65,12 +85,11 @@ public class Operator {
                 }
             }
         }
-        bw.write(time+"\t"+cloud.getStates()+"\n");
         bw.close();
     }
-    private double time=0;
-    /* private ArrayList<LampControl> lampControl; */
+    private float time=0;
+    private ArrayList<LampControl> lampControl;
     private ArrayList<ShadeControl> shadeControl;
     private Cloud cloud;
-    private final double delta=0.1;
+    private final float delta=0.1f;
 }
